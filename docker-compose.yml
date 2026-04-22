@@ -1,0 +1,28 @@
+services:
+  app:
+    image: ghcr.io/profies/taller_aaee_hogwarts_sb:latest
+    container_name: aaee_hogwarts_sb
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mysql:8.0
+    container_name: bbdd_hogwarts
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  db_data:
