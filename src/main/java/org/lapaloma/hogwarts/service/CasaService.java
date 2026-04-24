@@ -46,6 +46,7 @@ public class CasaService {
 
         // Esto provoca error
         //lista = null;
+        //prueba para crear la imagen del docker al cambiar el nombre se usuario
         
         if (lista == null || lista.isEmpty()) {
             throw new RuntimeException("No hay casas disponibles");
